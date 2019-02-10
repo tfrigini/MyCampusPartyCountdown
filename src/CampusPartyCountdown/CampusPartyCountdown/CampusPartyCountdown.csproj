@@ -26,7 +26,7 @@
     <EmbeddedResource Update="Views\CustomNavigationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MyTripCountdownView.xaml">
+    <EmbeddedResource Update="Views\MyCampusPartyCountdownView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

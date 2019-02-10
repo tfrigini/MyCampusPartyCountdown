@@ -55,7 +55,7 @@ namespace CampusPartyCountdown.ViewModels
 
         public override Task LoadAsync()
         {
-            LoadTrip();
+            LoadCampusParty();
 
             _countdown.EndDate = MyCampusParty.Date;
             _countdown.Start();
@@ -94,23 +94,20 @@ namespace CampusPartyCountdown.ViewModels
             Progress = 0;
         }
 
-        void LoadTrip()
+        void LoadCampusParty()
         {
             var endCampusParty = new DateTime(2019, 2, 17);
-            var asdf = endCampusParty - DateTime.Now;
-            var trip = new CampusParty()
+
+            var campusParty = new CampusParty()
             {
                 Picture = "gandalf",
                 Date = endCampusParty,
                 Creation = DateTime.Now.AddHours(-8)
             };
 
-            MyCampusParty = trip;
+            MyCampusParty = campusParty;
         }
 
-        void Restart()
-        {
-            MessagingCenter.Send(this, "Restart");
-        }
+        void Restart() => MessagingCenter.Send(this, "Restart");
     }
 }

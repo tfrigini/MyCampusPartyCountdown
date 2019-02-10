@@ -13,7 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <Style x:Key="TripTitleStyle" TargetType="Label">
+            <Style x:Key="TitleStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SourceSansSemiBold}" />
                 <Setter Property="FontSize" Value="{StaticResource FontSize40}" />
                 <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
@@ -51,12 +51,12 @@
             <Label
                 Grid.Row="0"
                 Text="#CPBR12 Countdown"
-                Style="{StaticResource TripTitleStyle}"/>
+                Style="{StaticResource TitleStyle}"/>
             <Grid
                 Grid.Row="1">
                 <ffimageloading:CachedImage  
                     Aspect="AspectFit"
-                    Source="{Binding MyTrip.Picture}"
+                    Source="{Binding MyCampusParty.Picture}"
                     Margin="12">
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation />

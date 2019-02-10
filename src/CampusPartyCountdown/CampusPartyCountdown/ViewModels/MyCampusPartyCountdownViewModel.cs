@@ -16,7 +16,7 @@ namespace CampusPartyCountdown.ViewModels
         private int _days;
         private int _hours;
         private int _minutes;
-        private double _progress;
+        private int _progress;
 
         public MyCampusPartyCountdownViewModel()
         {
@@ -47,7 +47,7 @@ namespace CampusPartyCountdown.ViewModels
             set => SetProperty(ref _minutes, value);
         }
 
-        public double Progress
+        public int Progress
         {
             get => _progress;
             set => SetProperty(ref _progress, value);

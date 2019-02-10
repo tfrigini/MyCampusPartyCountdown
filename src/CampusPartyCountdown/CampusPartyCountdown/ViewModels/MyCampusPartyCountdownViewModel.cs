@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CampusPartyCountdown.Models;
 using CampusPartyCountdown.ViewModels.Base;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 
 namespace CampusPartyCountdown.ViewModels
@@ -53,6 +55,11 @@ namespace CampusPartyCountdown.ViewModels
 
         public ICommand RestartCommand => new Command(Restart);
 
+        public ICommand LinkCommand => new Command<string>((url) =>
+        {
+            Device.OpenUri(new Uri(url));
+        });
+
         public override Task LoadAsync()
         {
             LoadCampusParty();
@@ -82,7 +89,15 @@ namespace CampusPartyCountdown.ViewModels
 
             var totalSeconds = (MyCampusParty.Date - MyCampusParty.Creation).TotalSeconds;
             var remainSeconds = _countdown.RemainTime.TotalSeconds;
-            Progress = remainSeconds / totalSeconds;
+
+            try
+            {
+                Progress = remainSeconds / totalSeconds;
+            }
+            catch (Exception exception)
+            {
+                Crashes.TrackError(exception);
+            }
         }
 
         void OnCountdownCompleted()
@@ -106,6 +121,7 @@ namespace CampusPartyCountdown.ViewModels
             };
 
             MyCampusParty = campusParty;
+            Analytics.TrackEvent("Load countdown timer info");
         }
 
         void Restart() => MessagingCenter.Send(this, "Restart");

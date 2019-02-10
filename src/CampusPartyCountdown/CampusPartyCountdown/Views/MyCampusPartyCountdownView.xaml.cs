@@ -1,4 +1,5 @@
-﻿using CampusPartyCountdown.ViewModels;
+﻿using System.Threading.Tasks;
+using CampusPartyCountdown.ViewModels;
 using CampusPartyCountdown.ViewModels.Base;
 using Xamarin.Forms;
 
@@ -19,17 +20,20 @@ namespace CampusPartyCountdown.Views
             var vm = BindingContext as BaseViewModel;
             await vm?.LoadAsync();
 
-            MessagingCenter.Subscribe<MyCampusPartyCountdownViewModel>(this, "Restart", (sender) =>
+            MessagingCenter.Subscribe<MyCampusPartyCountdownViewModel>(this, "Restart", async (sender) =>
             {
-                DisplayAlert("Já está com saudades da CPBR?", "Só ano que vem", "OK");
+                var answer = await DisplayAlert("Já está com saudades da CPBR, né!", 
+                                                "Não se preocupe, ano que vem tem mais. Você pretende vir?", 
+                                                "Sim", "Não");
             }
            );
-
         }
 
         protected override async void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<MyCampusPartyCountdownViewModel>(this, "Restart");
+
             var vm = BindingContext as BaseViewModel;
             await vm?.UnloadAsync();
         }

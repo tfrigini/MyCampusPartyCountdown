@@ -41,7 +41,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <StackLayout>
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -147,6 +148,13 @@
                         InputTransparent="True"/>
                 </Grid>
             </StackLayout>
-        </Grid>
+            </Grid>
+            <Label HorizontalOptions="CenterAndExpand" Text="Some more about the next editions of Campus Party:" FontFamily="{StaticResource SourceSansRegular}"/>
+            <Label HorizontalOptions="CenterAndExpand" Text="Click Here :)" TextColor="#DB1D8B" Margin="0,0,0,20" FontFamily="{StaticResource SourceSansSemiBold}">
+               <Label.GestureRecognizers>
+                   <TapGestureRecognizer Command="{Binding LinkCommand}" CommandParameter="" />
+               </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

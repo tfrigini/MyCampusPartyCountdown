@@ -124,6 +124,10 @@ namespace CampusPartyCountdown.ViewModels
             Analytics.TrackEvent("Load countdown timer info");
         }
 
-        void Restart() => MessagingCenter.Send(this, "Restart");
+        void Restart()
+        {
+            MessagingCenter.Send(this, "Restart");
+            Analytics.TrackEvent("Restart button clicked");
+        }
     }
 }

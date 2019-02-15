@@ -26,14 +26,14 @@
 
             <Style x:Key="BigCountdownStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SourceSansRegular}" />
-                <Setter Property="FontSize" Value="{StaticResource FontSize44}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize40}" />
                 <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
 
             <Style x:Key="SmallCountdownStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SourceSansRegular}" />
-                <Setter Property="FontSize" Value="{StaticResource FontSize20}" />
+                <Setter Property="FontSize" Value="{StaticResource FontSize16}" />
                 <Setter Property="TextColor" Value="{StaticResource TextGrayColor}" />
                 <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
@@ -53,7 +53,7 @@
                 Grid.Row="0"
                 Text="#CPBR12 Countdown"
                 Style="{StaticResource TitleStyle}"/>
-            <Grid
+            <Grid 
                 Grid.Row="1">
                 <ffimageloading:CachedImage  
                     Aspect="AspectFit"
@@ -131,7 +131,7 @@
                 Grid.Row="3"
                 Margin="0, 0, 0, 48">
                 <Grid
-                    Margin="84, 12">
+                    Margin="84, 8">
                     <skor:GradientButton  
                         HeightRequest="60"      
                         CornerRadius="96"
@@ -141,10 +141,10 @@
                     <Label       
                         Text="RESTART"  
                         FontFamily="{StaticResource SourceSansRegular}"
-                        FontSize="{StaticResource FontSize24}" 
+                        FontSize="{StaticResource FontSize20}" 
                         TextColor="{StaticResource WhiteColor}"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
+                        VerticalOptions="CenterAndExpand"
                         InputTransparent="True"/>
                 </Grid>
             </StackLayout>
@@ -153,6 +153,7 @@
             <Label HorizontalOptions="CenterAndExpand" Text="Click Here :)" TextColor="#DB1D8B" Margin="0,0,0,20" FontFamily="{StaticResource SourceSansSemiBold}">
                <Label.GestureRecognizers>
                    <TapGestureRecognizer Command="{Binding LinkCommand}" CommandParameter="" />
+                    <!--expected crash-->
                </Label.GestureRecognizers>
             </Label>
         </StackLayout>

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CampusPartyCountdown.ViewModels;
 using CampusPartyCountdown.ViewModels.Base;
+using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 
 namespace CampusPartyCountdown.Views
@@ -22,9 +23,14 @@ namespace CampusPartyCountdown.Views
 
             MessagingCenter.Subscribe<MyCampusPartyCountdownViewModel>(this, "Restart", async (sender) =>
             {
-                var answer = await DisplayAlert("Já está com saudades da CPBR, né!", 
-                                                "Não se preocupe, ano que vem tem mais. Você pretende vir?", 
+                var answer = await DisplayAlert("Já está com saudades da CPBR, né!",
+                                                "Não se preocupe, ano que vem tem mais aqui em SP. Você pretende vir?",
                                                 "Sim", "Não");
+
+                if (answer)
+                    Analytics.TrackEvent("Return to CPBR SP");
+                else
+                    Analytics.TrackEvent("Not return to CPBR SP");
             }
            );
         }
